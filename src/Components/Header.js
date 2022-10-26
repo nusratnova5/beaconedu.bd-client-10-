@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button,Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { FaUser } from 'react-icons/fa';
 import { AuthContext } from '../Contexts/AuthProvider';
 
 const Header = () => {
@@ -12,13 +13,25 @@ const Header = () => {
         <div>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="">Navbar</Navbar.Brand>
-                    <Nav className="me-auto justify-between">
-                        <Link to="/">Home</Link>
-                        <Link to="/course">Course</Link>
-                        <Link to="/login"><Button variant="secondary" >Login</Button></Link>
-                        <Link to="/register"><Button variant="secondary" >Register</Button></Link>
-                    <button onClick={logOut}>Log Out</button>
+                    <Navbar.Brand href="">ZenithLearn.bd</Navbar.Brand>
+                    <Nav className="justify-content-end gap-3">
+                        <Nav.Link href='/'>Home</Nav.Link>
+                        <Nav.Link href='/course'>Course</Nav.Link>
+                        <div className=''>
+                        <Nav.Link href='/register'><Button variant="secondary" >Register</Button></Nav.Link>
+                        </div>
+                        <div className=''>
+                        <Nav.Link href='/login'><Button variant="secondary" >Login</Button></Nav.Link>
+                        </div>
+                        <div className='width:20px'>
+                        <Button onClick={logOut} variant="secondary">Log out</Button>
+                        </div>
+                        {/*<span className='bg-light'>{user?.uid}</span>*/}
+
+                        {/*{user.photoURL ?
+                        <Image style={{height:'40px'}} roundedCircle src={user.photoURL} ></Image>
+                        :<FaUser></FaUser>
+                    }*/}
                     </Nav>
                 </Container>
             </Navbar>
