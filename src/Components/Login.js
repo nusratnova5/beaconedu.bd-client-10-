@@ -5,12 +5,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
+import { FaGithubSquare,FaGooglePlusSquare } from 'react-icons/fa';
 
 
 const Login = () => {
-    const { logIn,githubLogIn,googleLogIn } = useContext(AuthContext);
-    const githubProvider= new GithubAuthProvider();
-    const googleProvider=new GoogleAuthProvider();
+    const { logIn, githubLogIn, googleLogIn } = useContext(AuthContext);
+    const githubProvider = new GithubAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
 
 
     const handleSubmit = event => {
@@ -32,54 +33,75 @@ const Login = () => {
     }
 
 
-    const handleGithubLogIn=()=>{
-       githubLogIn(githubProvider)
-       .then(result => {
-        const user = result.user;
-        console.log(user);
-    })
-    .catch(error => {
-        console.error(error);
-    })
+    const handleGithubLogIn = () => {
+        githubLogIn(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
-    const handleGoogleLogIn=()=>{
+    const handleGoogleLogIn = () => {
         googleLogIn(googleProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     return (
-        <Container className="width:50px">
-            <div className=''>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" name='email' placeholder="Enter email" />
-                    </Form.Group>
+        <>
+            <p className='fs-3 fw-bold mt-5'>Please Login Here</p>
+            <Container className="w-25 bg-secondary mt-3 rounded">
+                <div className=''>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <div className='d-flex justify-content-evenly p-3 gap-3'>
+                                <div className='fw-bold'>
+                                    <Form.Label>Email address</Form.Label>
+                                </div>
+                                <div className=''>
+                                    <Form.Control type="email" name='email' placeholder="Enter Your Email" />
+                                </div>
+                            </div>
+                        </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name='password' placeholder="Password" />
-                    </Form.Group>
-                    <p>New to thid website!<Link to='/register'>Register</Link></p>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>
-                <div className='gap-3'>
-                <Button onClick={handleGithubLogIn}>Login with Github</Button>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <div className='d-flex justify-content-evenly p-1 gap-4'>
+                                <div className='fw-bold'>
+                                    <Form.Label>Password</Form.Label>
+                                </div>
+                                <div className=''>
+                                    <Form.Control type="password" name='password' placeholder="Enter Your Password" />
+                                </div>
+                            </div>
+                        </Form.Group>
+                        <div>
+                            <p className='text-light fw-bold'>New to <span className='text-info'>BeaconEdu.bd!</span></p>
+                            <Link to='/register' className='text-dark'> First Registered Here</Link>
+                        </div>
+                        <Button variant="info" type="submit" className='mt-2 mb-5 fw-bold text-light'>
+                            Submit
+                        </Button>
+                    </Form>
+                    <p className='text-light fw-bold'>Wanna Login with Github or Google?</p>
+                    <div className='d-flex flex-row justify-content-evenly '>
+                        <div className='gap-3 mb-3'>
+                            <Button variant="light" onClick={handleGithubLogIn} className='fw-bold'><FaGithubSquare></FaGithubSquare>   Github</Button>
+                        </div>
+                        <div className='gap-3 mb-3 '>
+                            <Button variant="light" onClick={handleGoogleLogIn} className='fw-bold'><FaGooglePlusSquare></FaGooglePlusSquare>   Google</Button>
+                        </div>
+                    </div>
                 </div>
-                <div className='gap-3'>
-                <Button onClick={handleGoogleLogIn}>Login with Google</Button>
-                </div>
-            </div>
-        </Container>
+            </Container>
+        </>
     );
 };
 
