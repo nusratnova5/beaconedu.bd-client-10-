@@ -84,9 +84,9 @@ const Login = () => {
                         </Form.Group>
                         <div>
                             <p className='text-light fw-bold'>New to <span className='text-info'>BeaconEdu.bd!</span></p>
-                            <Link to='/register' className='text-dark'> First Registered Here</Link>
+                            <Link to='/register' className='text-dark'> Be Registered Here</Link>
                         </div>
-                        <Button variant="info" type="submit" className='mt-2 mb-5 fw-bold text-light'>
+                        <Button variant="info" type="submit" className='mt-3 mb-5 fw-bold text-light'>
                             Submit
                         </Button>
                     </Form>

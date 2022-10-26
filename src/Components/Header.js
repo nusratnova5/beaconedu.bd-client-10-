@@ -13,7 +13,7 @@ const Header = () => {
     return (
         <div>
             <Navbar bg="dark" variant="dark">
-                <Container fluid>
+                <Container>
                     <div className='d-flex gap-3'>
                         <div>
                             <img src={img} alt='' height={60} width={80}></img>
@@ -23,24 +23,27 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <Nav className="justify-content-end gap-3 container-fluid">
-                        <Nav.Link href='/'>Home</Nav.Link>
-                        <Nav.Link href='/course'>Course</Nav.Link>
-                        <div className=''>
-                            <Nav.Link href='/register'><Button variant="secondary" >Register</Button></Nav.Link>
-                        </div>
-                        <div className=''>
-                            <Nav.Link href='/login'><Button variant="secondary" >Login</Button></Nav.Link>
-                        </div>
-                        <div className='width:20px'>
-                            <Button onClick={logOut} variant="secondary">Log out</Button>
-                        </div>
-                        <span className='bg-light'>{user?.displayName}</span>
+                    <Nav className="">
+                        <div className='d-flex flex-row justify-content-end'>
+                            <Nav.Link href='/'>Home</Nav.Link>
+                            <Nav.Link href='/course'>Course</Nav.Link>
+                            <div className=''>
+                                <Nav.Link href='/register'><Button variant="secondary" >Register</Button></Nav.Link>
+                            </div>
+                            <div className=''>
+                                <Nav.Link href='/login'><Button variant="secondary" >Login</Button></Nav.Link>
+                            </div>
+                            <div className=''>
+                                <Button onClick={logOut} variant="secondary">Log out</Button>
+                            </div>
+                            <span className='bg-light'>{user?.uid}</span>
 
-                        {/*{user.photoURL ?
+                            {/*{user.photoURL ?
                         <Image style={{height:'40px'}} roundedCircle src={user.photoURL} ></Image>
                         :<FaUser></FaUser>
                     }*/}
+                        </div>
+
                     </Nav>
                 </Container>
             </Navbar>
