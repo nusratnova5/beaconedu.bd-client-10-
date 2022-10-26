@@ -27,6 +27,7 @@ const Header = () => {
                         <div className='d-flex flex-row justify-content-end'>
                             <Nav.Link href='/'>Home</Nav.Link>
                             <Nav.Link href='/course'>Course</Nav.Link>
+                            <Nav.Link href='/blog'>Blog</Nav.Link>
                             <div className=''>
                                 <Nav.Link href='/register'><Button variant="secondary" >Register</Button></Nav.Link>
                             </div>
@@ -36,12 +37,12 @@ const Header = () => {
                             <div className=''>
                                 <Button onClick={logOut} variant="secondary">Log out</Button>
                             </div>
-                            <span className='bg-light'>{user?.uid}</span>
+                            {/*<span className='bg-light'>{user?.uid}</span>*/}
 
-                            {/*{user.photoURL ?
+                            {user?.photoURL ?
                         <Image style={{height:'40px'}} roundedCircle src={user.photoURL} ></Image>
                         :<FaUser></FaUser>
-                    }*/}
+                    }
                         </div>
 
                     </Nav>

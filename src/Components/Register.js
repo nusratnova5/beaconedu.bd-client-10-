@@ -29,7 +29,7 @@ const Register = () => {
 
     }
     return (
-        <Container className="w-50 bg-secondary mt-3 rounded">
+        <Container className="w-25 bg-secondary mt-3 rounded">
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <div className='d-flex justify-content-evenly p-3 gap-3'>
@@ -79,8 +79,6 @@ const Register = () => {
                 <p className='text-light fw-bold'>Already have an account!</p>
                 <Link to='/login' className='text-dark pb-3'>Login Here</Link>
                 </div>
-                
-
             </Form>
         </Container>
     );
