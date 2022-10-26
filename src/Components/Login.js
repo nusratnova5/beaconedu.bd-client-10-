@@ -1,4 +1,4 @@
-import { GithubAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -6,9 +6,13 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 
+
 const Login = () => {
-    const { logIn,githubLogIn } = useContext(AuthContext);
-    const githubProvider= new GithubAuthProvider()
+    const { logIn,githubLogIn,googleLogIn } = useContext(AuthContext);
+    const githubProvider= new GithubAuthProvider();
+    const googleProvider=new GoogleAuthProvider();
+
+
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -39,6 +43,17 @@ const Login = () => {
     })
     }
 
+    const handleGoogleLogIn=()=>{
+        googleLogIn(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    }
+
     return (
         <Container className="width:50px">
             <div className=''>
@@ -59,6 +74,9 @@ const Login = () => {
                 </Form>
                 <div className='gap-3'>
                 <Button onClick={handleGithubLogIn}>Login with Github</Button>
+                </div>
+                <div className='gap-3'>
+                <Button onClick={handleGoogleLogIn}>Login with Google</Button>
                 </div>
             </div>
         </Container>

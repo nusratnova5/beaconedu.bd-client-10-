@@ -4,8 +4,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, } from 'react-icons/fa';
 import { AuthContext } from '../Contexts/AuthProvider';
+
 
 const Header = () => {
     const {user,logOut}=useContext(AuthContext)
@@ -13,7 +14,8 @@ const Header = () => {
         <div>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="">ZenithLearn.bd</Navbar.Brand>
+                   
+                    <Navbar.Brand href=""> <img src='../../src/components/beacon.png.png'height={30} width={40}/>BeaconEdu.bd</Navbar.Brand>
                     <Nav className="justify-content-end gap-3">
                         <Nav.Link href='/'>Home</Nav.Link>
                         <Nav.Link href='/course'>Course</Nav.Link>
@@ -26,7 +28,7 @@ const Header = () => {
                         <div className='width:20px'>
                         <Button onClick={logOut} variant="secondary">Log out</Button>
                         </div>
-                        {/*<span className='bg-light'>{user?.uid}</span>*/}
+                        <span className='bg-light'>{user?.displayName}</span>
 
                         {/*{user.photoURL ?
                         <Image style={{height:'40px'}} roundedCircle src={user.photoURL} ></Image>
