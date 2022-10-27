@@ -4,7 +4,7 @@ import Course from '../Course/Course';
 
 const Leftside = ({courses}) => {
     return (
-        <div className='br-secondary'>
+        <div className='bg-secondary'>
             {
                 courses.map( course => <Course
                     key={course.id}
