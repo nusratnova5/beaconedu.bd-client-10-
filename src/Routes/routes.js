@@ -4,6 +4,7 @@ import Courses from "../Components/Courses";
 import Home from "../Components/Home";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
+import Rightside from "../Components/Rightside/Rightside";
 import Main from "../Layout/Main";
 
 export const routes =createBrowserRouter([
@@ -17,7 +18,19 @@ export const routes =createBrowserRouter([
             },
             {
                 path:'/course',
-                element:<Courses></Courses>
+                loader: () => {
+                    return fetch('http://localhost:5000/courses');
+                },
+                element:<Courses></Courses>,
+                children: [
+                    {
+                        path: '/course/:name',
+                        loader: ({params}) => {
+                            return fetch(`http://localhost:5000/courses/${params.name}`)
+                        },
+                        element: <Rightside></Rightside> 
+                    }
+                ]
             },
             {
                 path:'/blog',

@@ -12,19 +12,20 @@ const Register = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.fullName.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
+        // console.log(name, email, password);
 
-        createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                form.reset();
-            })
-            .catch(error => {
-                console.error(error);
-            })
+        createUser(email, password, name, photo)
+            // .then(result => {
+            //     const user = result.user;
+            //     console.log(user);
+            //     form.reset();
+            // })
+            // .catch(error => {
+            //     console.error(error);
+            // })
 
 
     }
@@ -47,7 +48,7 @@ const Register = () => {
                             <Form.Label>Photo URL</Form.Label>
                         </div>
                         <div className=''>
-                            <Form.Control type="text" name='' placeholder="Enter Your Photo url" />
+                            <Form.Control type="text" name='photo' placeholder="Enter Your Photo url" />
                         </div>
                     </div>
                 </Form.Group>
@@ -75,9 +76,9 @@ const Register = () => {
                 <Button variant="primary" type="submit" className='mt-2'>
                         Submit
                 </Button>
-                <div className='mt-2'>
+                <div className='mt-2 mb-2'>
                 <p className='text-light fw-bold'>Already have an account!</p>
-                <Link to='/login' className='text-dark pb-3'>Login Here</Link>
+                <Link to='/login' className='text-dark'>Login Here</Link>
                 </div>
             </Form>
         </Container>

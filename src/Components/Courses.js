@@ -1,17 +1,26 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { Outlet, useLoaderData } from 'react-router-dom';
+import Leftside from './Leftside/Leftside';
 
 const Courses = () => {
+
+    const courses = useLoaderData();
+    console.log(courses);
+
     return (
         <div>
-            <h2>this is Courses</h2>
+            <div>This is cors</div>
             <Container>
                 <Row>
                     <Col lg="4">
-                        <h2>this is nav site</h2>
+                        <Leftside 
+                            key={courses.id}
+                            courses = {courses}
+                        ></Leftside>
                     </Col>
                     <Col lg="8">
-                        <h2>This is couurse detail part</h2>
+                        <Outlet></Outlet>
                     </Col>
                 </Row>
             </Container>

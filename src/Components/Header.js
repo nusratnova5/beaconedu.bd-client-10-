@@ -3,10 +3,11 @@ import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
 import { FaUser, } from 'react-icons/fa';
 import { AuthContext } from '../Contexts/AuthProvider';
-import img from './beacon.png.png'
+import img from './beacon.png.png';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -28,7 +29,22 @@ const Header = () => {
                             <Nav.Link href='/'>Home</Nav.Link>
                             <Nav.Link href='/course'>Course</Nav.Link>
                             <Nav.Link href='/blog'>Blog</Nav.Link>
-                            <div className=''>
+
+
+                            {
+                                user?.uid ?
+                                    <>
+                                        <Button onClick={logOut} variant="secondary">Log out</Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Nav.Link href='/register'><Button variant="secondary" >Register</Button></Nav.Link>
+                                        <Nav.Link href='/login'><Button variant="secondary" >Login</Button></Nav.Link>
+                                    </>
+                            }
+
+
+                            {/* <div className=''>
                                 <Nav.Link href='/register'><Button variant="secondary" >Register</Button></Nav.Link>
                             </div>
                             <div className=''>
@@ -36,13 +52,29 @@ const Header = () => {
                             </div>
                             <div className=''>
                                 <Button onClick={logOut} variant="secondary">Log out</Button>
-                            </div>
+                            </div> */}
                             {/*<span className='bg-light'>{user?.uid}</span>*/}
 
                             {user?.photoURL ?
-                        <Image style={{height:'40px'}} roundedCircle src={user.photoURL} ></Image>
-                        :<FaUser></FaUser>
-                    }
+                                <>
+
+                                    <OverlayTrigger
+                                        key={'top'}
+                                        placement={'bottom'}
+                                        overlay={
+                                            <Tooltip id={`tooltip-${'top'}`}>
+                                                {user.displayName}
+                                            </Tooltip>
+                                        }
+                                    >
+                                        <Button variant="bg-transparent border border-0"><Image style={{ height: '40px' }} roundedCircle src={user.photoURL} ></Image></Button>
+                                    </OverlayTrigger>
+
+                                    {/* <Button className='bg-transparent border border-0'><Image style={{ height: '40px' }} roundedCircle src={user.photoURL} ></Image></Button> */}
+
+                                </>
+                                : <FaUser></FaUser>
+                            }
                         </div>
 
                     </Nav>
