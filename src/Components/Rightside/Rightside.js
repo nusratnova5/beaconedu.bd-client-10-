@@ -12,7 +12,7 @@ const ref = React.createRef();
 const Rightside = () => {
 
     const courseDetails = useLoaderData()[0];
-    const { name } = courseDetails;
+    const { name,id } = courseDetails;
     const { details } = courseDetails;
     const { image } = courseDetails;
     const { price } = courseDetails;
@@ -61,7 +61,7 @@ const Rightside = () => {
                         <div><FaFile></FaFile>{lesson}</div>
                         <div><FaDollarSign></FaDollarSign>{price}</div>
                     </div>
-                    <Link to='/checkout'>
+                    <Link to={`/course/name/${id}`}>
                         <Button variant="success" size="lg">Get premium access</Button>
                     </Link>
                 </Card.Body>

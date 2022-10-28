@@ -10,7 +10,6 @@ const Courses = () => {
 
     return (
         <div>
-            <div className='fs-1 fw-bold text-info'>Course Details</div>
             <Container>
                 <Row>
                     <Col lg="4">

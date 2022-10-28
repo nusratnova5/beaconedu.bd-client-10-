@@ -1,23 +1,25 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, { useContext, useState } from 'react';
+import {  Container} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 import { FaGithubSquare,FaGooglePlusSquare } from 'react-icons/fa';
 
 
 const Login = () => {
+    const [error,setError]=useState('');
     const { logIn, githubLogIn, googleLogIn } = useContext(AuthContext);
     const githubProvider = new GithubAuthProvider();
     const googleProvider = new GoogleAuthProvider();
     
     const navigate = useNavigate();
-    const location=useLocation();
+    let location=useLocation();
     const from=location.state?.from?.pathname || '/';
+    console.log(from);
 
-
+  
 
     const handleSubmit = event => {
         
@@ -33,10 +35,11 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                navigate(from,{replace:true})
+                navigate(from,{replace:true});
             })
             .catch(error => {
-                console.error(error);
+                console.log(error.message);
+                setError(error.message);
             })
     }
 
@@ -46,6 +49,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from,{replace:true});
             })
             .catch(error => {
                 console.error(error);
@@ -57,6 +61,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate( from, {replace: true} );
             })
             .catch(error => {
                 console.error(error);
@@ -90,13 +95,17 @@ const Login = () => {
                                 </div>
                             </div>
                         </Form.Group>
-                        <div>
+                        <Button variant="info" type="submit" className='mt-3 mb-1 fw-bold text-light'>
+                            Submit
+                        </Button>
+                        
+                        <div className='text-danger mb-5'>
+                        {error}
+                    </div>
+                    <div>
                             <p className='text-light fw-bold'>New to <span className='text-info'>BeaconEdu.bd!</span></p>
                             <Link to='/register' className='text-dark'> Be Registered Here</Link>
                         </div>
-                        <Button variant="info" type="submit" className='mt-3 mb-5 fw-bold text-light'>
-                            Submit
-                        </Button>
                     </Form>
                     <p className='text-light fw-bold'>Wanna Login with Github or Google?</p>
                     <div className='d-flex flex-row justify-content-evenly '>

@@ -26,10 +26,7 @@ const Header = () => {
                     <Container>
                         <Nav className='d-flex gap-3'>
                             <div>
-                                <img src={img} alt='' height={60} width={80}></img>
-                            </div>
-                            <div>
-                                <Navbar.Brand href="" className='fs-1 fw-bold'> BeaconEdu.bd</Navbar.Brand>
+                                <Navbar.Brand href="/" className='fs-1 fw-bold'><img src={img} alt='' height={60} width={80}></img> BeaconEdu.bd</Navbar.Brand>
                             </div>
                         </Nav>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
