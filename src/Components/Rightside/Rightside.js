@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { FaStar,FaDollarSign,FaFile } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
@@ -32,7 +32,10 @@ const Rightside = () => {
           <div><FaFile></FaFile>{lesson}</div>
           <div><FaDollarSign></FaDollarSign>{price}</div>
           </div>
-           <Button variant="success" size="lg">Get premium access</Button>
+          <Link to='/checkout'>
+          <Button variant="success" size="lg">Get premium access</Button>
+            </Link>  
+           
         </Card.Body>
       </Card>
         </div>

@@ -6,8 +6,10 @@ const auth=getAuth(app)
 
 const AuthProvider = ({children}) => {
    const [user,setUser] = useState({});
+   const [loading,setLoading]=useState(true);
    
    const createUser=async (email,password, name, photo)=>{
+      setLoading(true);
       await createUserWithEmailAndPassword(auth,email,password);
       // const user = auth.currentUser;
       // console.log("User:--",user)
@@ -25,6 +27,7 @@ const AuthProvider = ({children}) => {
    }
 
    const logIn=(email,password)=>{
+      setLoading(true);
     return signInWithEmailAndPassword(auth,email,password);
    }
 
@@ -37,6 +40,7 @@ const AuthProvider = ({children}) => {
    }
 
    const logOut =()=>{
+      setLoading(true);
     return signOut(auth);
    }
    
@@ -45,13 +49,14 @@ const AuthProvider = ({children}) => {
      
    //   console.log(currentUser);
      setUser(currentUser);
+     setLoading(false)
     })
     return ()=>{
      unsubscribe();
     }
  },[])
 
-    const authInfo={user,createUser,logIn,githubLogIn,googleLogIn,logOut}
+    const authInfo={user,loading,createUser,logIn,githubLogIn,googleLogIn,logOut}
 
     return (
         <AuthContext.Provider value ={authInfo}>
