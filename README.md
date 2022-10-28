@@ -1,5 +1,5 @@
 Website Name:BeaconEdu.bd
-Website Link:
+Website Link: https://assignment-10-client-sit-b21ab.web.app/
 
 Features-
 1.The website is basically a education website which offer some tech-related courses. There is a navbar containing a logo,name,home,blog,register,logIn-Logout toggle button,dark-light theme toggle button.The profile picture is shown when a user is logged in.
