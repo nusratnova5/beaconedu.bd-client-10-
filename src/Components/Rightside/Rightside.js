@@ -22,7 +22,7 @@ const Rightside = () => {
         <div>
             <div className='d-flex justify-content-between align-items-center'>
                 <div>
-                    <h2 className='m-2 p-2'>{name}</h2>
+                    <h2 className='m-3 p-3 bg-dark text-light'>{name}</h2>
                 </div>
                 <div>
 
@@ -45,7 +45,7 @@ const Rightside = () => {
                     </Pdf> */}
                 </div>
             </div>
-            <div ref={ref}>
+            <div ref={ref}>   
             <Card>
                 <Card.Img variant="top" src={image} height={400} />
                 <Card.Body>
