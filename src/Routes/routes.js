@@ -21,14 +21,14 @@ export const routes =createBrowserRouter([
             {
                 path:'/course',
                 loader: () => {
-                    return fetch('http://localhost:5000/courses');
+                    return fetch('https://beacon-kappa.vercel.app/courses');
                 },
                 element:<Courses></Courses>,
                 children: [
                     {
                         path: '/course/:name',
                         loader: ({params}) => {
-                            return fetch(`http://localhost:5000/courses/${params.name}`)
+                            return fetch(`https://beacon-kappa.vercel.app/courses/${params.name}`)
                         },
                         element: <Rightside></Rightside> 
                     }

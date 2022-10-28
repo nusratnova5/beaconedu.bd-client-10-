@@ -1,16 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaUser, } from 'react-icons/fa';
+import { FaUser,FaToggleOff,FaToggleOn } from 'react-icons/fa';
 import { AuthContext } from '../Contexts/AuthProvider';
 import img from './beacon.png.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+    const [dark, setDark] = useState(true);
+    const darkHandler = () => {
+        if(!dark){
+        setDark(true);
+        }
+    else setDark(false);
+    }
+
     return (
         <div>
             <div>
@@ -66,8 +74,15 @@ const Header = () => {
                                         : <FaUser></FaUser>
                                     }
                                 </div>
-
+                                <>
+			{
+				dark? <Nav.Link onClick={darkHandler}>Dark <FaToggleOff size={30}></FaToggleOff></Nav.Link> 
+				:
+				<Nav.Link onClick={darkHandler}>Light <FaToggleOn size={30}></FaToggleOn></Nav.Link>
+			}
+		</>
                             </Nav>
+                           
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
